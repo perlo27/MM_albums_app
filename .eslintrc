@@ -1,0 +1,17 @@
+{
+  "plugins": [
+    "import",
+    "react",
+    "react-native",
+    "jest"
+  ],
+  "env": {
+    "react-native/react-native": true,
+    "node": true,
+    "mocha": true,
+    "browser": true,
+    "jest/globals": true
+  },
+  "parser": "babel-eslint",
+  "extends": ["prettier:prettier/recommended"]
+}

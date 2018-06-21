@@ -3,7 +3,7 @@ import React from 'react';
 
 export const withDataLoader = Component => {
   class Wrapper extends Component {
-    componentDidMount() {
+    async componentDidMount() {
       // add loading data here
     }
   }

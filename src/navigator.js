@@ -1,15 +1,25 @@
 import { FluidNavigator } from 'react-navigation-fluid-transitions';
 import React from 'react';
-import {View, Text} from 'react-native'
+import { View, Text } from 'react-native';
+
+import { AlbumsList, Album } from './components';
+
+export const paths = {
+  albumList: 'albumList',
+  album: 'album',
+  photo: 'photo',
+};
 
 export default FluidNavigator({
-  albumList: {
-    screen: () => <View><Text>albumList</Text></View>
+  [paths.albumList]: {
+    screen: AlbumsList,
   },
-  album: {
-    screen: () => <View><Text>album</Text></View>
+  [paths.album]: Album,
+  [paths.photo]: {
+    screen: () => (
+      <View>
+        <Text>photo</Text>
+      </View>
+    ),
   },
-  photo: {
-    screen: () => <View><Text>photo</Text></View>
-  }
-})
+});

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Header as NBHeader, Left, Body, Button, Icon } from 'native-base';
 
 import { headerHeight } from '../config';
-import { navigation } from './propTypes';
+import { navigation } from '../propTypes';
 
 export const Header = ({ title, navigation }) => (
   <NBHeader style={styles.header}>

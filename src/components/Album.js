@@ -6,13 +6,11 @@ import { Transition } from 'react-navigation-fluid-transitions';
 import { Spinner } from 'native-base';
 
 import { navigationPaths } from '../navigator';
-import { photo } from './propTypes';
+import { photo } from '../propTypes';
 import { Header } from './Header';
+import { albumAndPhotosSelector } from '../selectors';
 
-@connect(({ entities: { photos, albums } }, { navigation: { state: { params } } }) => ({
-  photos: photos[params.id],
-  album: albums.find(a => a.id === params.id),
-}))
+@connect(albumAndPhotosSelector)
 export class Album extends PureComponent {
   static propTypes = {
     photos: PropTypes.arrayOf(photo),

@@ -4,13 +4,13 @@ import { View, Image, Dimensions, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { Transition } from 'react-navigation-fluid-transitions';
 
-import { photo } from './propTypes';
+import { photo } from '../propTypes';
 import { Header } from './Header';
 import { headerHeight } from '../config';
 
-@connect(({ entities: { photos } }, { navigation: { state: { params } } }) => ({
-  photo: photos[params.albumId].find(({ id }) => id === params.id),
-}))
+import { photoSelector } from '../selectors';
+
+@connect(photoSelector)
 export class Photo extends PureComponent {
   static propTypes = { photo };
 

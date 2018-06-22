@@ -1,21 +1,42 @@
-import React, { Component } from 'react';
-import { View, Image } from 'react-native';
+import React, { PureComponent } from 'react';
+import {getStatusBarHeight} from 'react-native-status-bar-height';
+import { View, Image, Dimensions, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
+import { Transition } from 'react-navigation-fluid-transitions';
+
 import { photo } from './propTypes';
+import {Header} from './Header'
+import { headerHeight } from '../config';
 
 
 @connect(({ entities: { photos } }, { navigation: { state: { params } } }) => {
-  console.log('params', params);
+  console.log('params', photos[params.albumId].find(({ id }) => id === params.id));
   return {
     photo: photos[params.albumId].find(({ id }) => id === params.id),
   };
 })
-export class Photo extends Component {
-
+export class Photo extends PureComponent {
   static propTypes = { photo };
 
   render() {
-    console.log(this.props);
-    return <Image style={{ width: '100%', height: '50%' }} source={{ uri: this.props.photo.url }} />;
+    const {photo, navigation} = this.props;
+    return (
+      <View style={styles.container}>
+        <Header title={photo.title} navigation={navigation} />
+        <Transition shared={`image${photo.id}`}>
+          <Image style={styles.image} source={{ uri: photo.url }} />
+        </Transition>
+      </View>
+    );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  image: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height - getStatusBarHeight() - headerHeight,
+  },
+});

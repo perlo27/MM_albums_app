@@ -1,5 +1,4 @@
 import { FluidNavigator } from 'react-navigation-fluid-transitions';
-import React from 'react';
 
 import { AlbumsList, Album, Photo } from './components';
 
@@ -13,6 +12,10 @@ export default FluidNavigator({
   [navigationPaths.albumList]: {
     screen: AlbumsList,
   },
-  [navigationPaths.album]: Album,
-  [navigationPaths.photo]: Photo,
+  [navigationPaths.album]: {
+    screen: Album,
+  },
+  [navigationPaths.photo]: {
+    screen: Photo
+  },
 });

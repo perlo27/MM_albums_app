@@ -1,31 +1,47 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { FlatList, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
+import {
+  FlatList,
+  Dimensions,
+  TouchableOpacity,
+  Image,
+  ActivityIndicator,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import PropTypes from 'prop-types';
+import { Transition } from 'react-navigation-fluid-transitions';
+
 import { navigationPaths } from '../navigator';
 import { photo } from './propTypes';
+import {Header} from './Header';
 
 
-@connect(({ entities: { photos } }, { navigation: { state: { params } } }) => ({
+
+@connect(({ entities: { photos, albums } }, { navigation: { state: { params } } }) => ({
   photos: photos[params.id],
+  album: albums.find(a => a.id === params.id),
 }))
 export class Album extends PureComponent {
   static propTypes = {
-    photos: PropTypes.arrayOf(photo)
+    photos: PropTypes.arrayOf(photo),
   };
 
   static defaultProps = {
     photos: [],
   };
 
-  onPress = (id, albumId) => () =>
+  onThumbnailPress = (id, albumId) => () =>
     this.props.navigation.navigate(navigationPaths.photo, { id, albumId });
 
   keyExtractor = item => `${item.id}`;
 
-  renderPhoto = ({ item: { title, id, thumbnailUrl, albumId } }) => (
-    <TouchableOpacity onPress={this.onPress(id, albumId)}>
-      <Image style={{ width: 150, height: 150 }} source={{ uri: thumbnailUrl }} />
+  renderThumbnail = ({ item: { title, id, thumbnailUrl, albumId } }) => (
+    <TouchableOpacity style={styles.row} onPress={this.onThumbnailPress(id, albumId)}>
+      <Transition shared={`image${id}`}>
+        <Image style={styles.image} source={{ uri: thumbnailUrl }} />
+      </Transition>
     </TouchableOpacity>
   );
 
@@ -35,11 +51,38 @@ export class Album extends PureComponent {
       return <ActivityIndicator />;
     }
     return (
-      <FlatList
-        data={this.props.photos}
-        keyExtractor={this.keyExtractor}
-        renderItem={this.renderPhoto}
-      />
+      <View>
+        <Header
+          title={this.props.album.title}
+          navigation={this.props.navigation}
+        />
+        <FlatList
+          style={{marginTop: 5}}
+          data={this.props.photos}
+          keyExtractor={this.keyExtractor}
+          renderItem={this.renderThumbnail}
+          numColumns={3}
+          columnWrapperStyle={{ justifyContent: 'center' }}
+        />
+      </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  row: {
+    margin: 2,
+    flexDirection: 'row',
+  },
+  textContainer: {
+    flexDirection: 'column',
+    marginLeft: 18,
+    flex: 1,
+    justifyContent: 'center',
+  },
+  image: {
+    width: Dimensions.get('window').width / 3 - 6, //
+    height: Dimensions.get('window').width / 3 - 6,
+    borderRadius: 20,
+  },
+});

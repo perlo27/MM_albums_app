@@ -1,21 +1,17 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { FlatList, ActivityIndicator, View, Text } from 'react-native';
-import { ListItem, Header, Title } from 'native-base';
-
+import { FlatList, View, Text } from 'react-native';
+import { ListItem, Header, Title, Spinner } from 'native-base';
 
 import { withDataLoader } from '../decorators';
 import { navigationPaths } from '../navigator';
 import { album } from './propTypes';
 import { headerHeight } from '../config';
 
-
-
 @withDataLoader
 export class AlbumsList extends PureComponent {
   static propTypes = {
     albums: PropTypes.arrayOf(album),
-    isLoading: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -34,20 +30,17 @@ export class AlbumsList extends PureComponent {
   );
 
   render() {
-    console.log('in Albums', this.props);
-    if (this.props.isLoading) {
-      return <ActivityIndicator />;
-    }
+    const { albums } = this.props;
     return (
       <View>
-        <Header style={{backgroundColor: 'white', height: headerHeight}}>
+        <Header style={{ backgroundColor: 'white', height: headerHeight }}>
           <Title>Albums</Title>
         </Header>
         <FlatList
-          data={this.props.albums}
+          data={albums}
           keyExtractor={this.keyExtractor}
           renderItem={this.renderAlbum}
-          ListEmptyComponent={ActivityIndicator}
+          ListEmptyComponent={<Spinner color="green" />}
         />
       </View>
     );

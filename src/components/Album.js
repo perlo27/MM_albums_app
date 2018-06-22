@@ -1,23 +1,13 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import {
-  FlatList,
-  Dimensions,
-  TouchableOpacity,
-  Image,
-  ActivityIndicator,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { FlatList, Dimensions, TouchableOpacity, Image, StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
 import { Transition } from 'react-navigation-fluid-transitions';
+import { Spinner } from 'native-base';
 
 import { navigationPaths } from '../navigator';
 import { photo } from './propTypes';
-import {Header} from './Header';
-
-
+import { Header } from './Header';
 
 @connect(({ entities: { photos, albums } }, { navigation: { state: { params } } }) => ({
   photos: photos[params.id],
@@ -46,23 +36,18 @@ export class Album extends PureComponent {
   );
 
   render() {
-    console.log('in Album!!!!!', this.props);
-    if (this.props.isLoading) {
-      return <ActivityIndicator />;
-    }
+    const { album, photos, navigation } = this.props;
     return (
       <View>
-        <Header
-          title={this.props.album.title}
-          navigation={this.props.navigation}
-        />
+        <Header title={album.title} navigation={navigation} />
         <FlatList
-          style={{marginTop: 5}}
-          data={this.props.photos}
+          style={{ marginTop: 5 }}
+          data={photos}
           keyExtractor={this.keyExtractor}
           renderItem={this.renderThumbnail}
           numColumns={3}
           columnWrapperStyle={{ justifyContent: 'center' }}
+          ListEmptyComponent={<Spinner color="green" />}
         />
       </View>
     );

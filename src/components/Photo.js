@@ -1,13 +1,12 @@
 import React, { PureComponent } from 'react';
-import {getStatusBarHeight} from 'react-native-status-bar-height';
+import { getStatusBarHeight } from 'react-native-status-bar-height';
 import { View, Image, Dimensions, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { Transition } from 'react-navigation-fluid-transitions';
 
 import { photo } from './propTypes';
-import {Header} from './Header'
+import { Header } from './Header';
 import { headerHeight } from '../config';
-
 
 @connect(({ entities: { photos } }, { navigation: { state: { params } } }) => {
   console.log('params', photos[params.albumId].find(({ id }) => id === params.id));
@@ -19,7 +18,7 @@ export class Photo extends PureComponent {
   static propTypes = { photo };
 
   render() {
-    const {photo, navigation} = this.props;
+    const { photo, navigation } = this.props;
     return (
       <View style={styles.container}>
         <Header title={photo.title} navigation={navigation} />

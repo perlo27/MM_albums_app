@@ -21,7 +21,9 @@ export class Photo extends PureComponent {
     }
     return (
       <View style={styles.container}>
-        <Header title={photo.title} navigation={navigation} />
+        <Transition anchor={`image${photo.id}`}>
+          <Header title={photo.title} navigation={navigation} />
+        </Transition>
         <Transition shared={`image${photo.id}`}>
           <Image style={styles.image} source={{ uri: photo.url }} />
         </Transition>

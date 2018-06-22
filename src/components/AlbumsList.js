@@ -5,7 +5,7 @@ import { ListItem, Header, Title, Spinner } from 'native-base';
 
 import { withDataLoader } from '../decorators';
 import { navigationPaths } from '../navigator';
-import { album } from './propTypes';
+import { album } from '../propTypes';
 import { headerHeight } from '../config';
 
 @withDataLoader

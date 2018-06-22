@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { FlatList, View, Text, StyleSheet } from 'react-native';
+import { FlatList, View, Text, StyleSheet, Platform } from 'react-native';
 import { ListItem, Header, Title, Spinner, Left, Right, Icon } from 'native-base';
 import { Transition } from 'react-navigation-fluid-transitions';
 
@@ -40,7 +40,7 @@ export class AlbumsList extends PureComponent {
     return (
       <Transition appear="horizontal">
         <View>
-          <Header style={styles.header}>
+          <Header style={[styles.header, Platform.OS !== 'android' && { backgroundColor: 'white' }]}>
             <Title>Albums</Title>
           </Header>
           <FlatList
@@ -57,7 +57,6 @@ export class AlbumsList extends PureComponent {
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: 'white',
     height: headerHeight,
     paddingTop: 0,
     alignItems: 'center',

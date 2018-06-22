@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import { Header as NBHeader, Left, Body, Button, Icon } from 'native-base';
 
@@ -7,7 +7,7 @@ import { headerHeight } from '../config';
 import { navigation } from '../propTypes';
 
 export const Header = ({ title, navigation }) => (
-  <NBHeader style={styles.header}>
+  <NBHeader style={[styles.header, Platform.OS !== 'android' && { backgroundColor: 'white' }]}>
     <Left style={styles.left}>
       <Button transparent onPress={() => navigation.goBack()}>
         <Icon name="arrow-back" />
@@ -23,7 +23,6 @@ export const Header = ({ title, navigation }) => (
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: 'white',
     height: headerHeight,
     paddingTop: 0,
   },

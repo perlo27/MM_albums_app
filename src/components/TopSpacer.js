@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import {getStatusBarHeight} from 'react-native-status-bar-height';
+import { View, StyleSheet, Platform } from 'react-native';
+import { getStatusBarHeight } from 'react-native-status-bar-height';
 
-
-export const TopSpacer = () => <View style={styles.topSpacer} />;
+console.log();
+export const TopSpacer = () =>
+  Platform.OS === 'android' ? null : <View style={styles.topSpacer} />;
 
 const styles = StyleSheet.create({
   topSpacer: {

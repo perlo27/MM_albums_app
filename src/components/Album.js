@@ -9,6 +9,7 @@ import { navigationPaths } from '../navigator';
 import { photo } from '../propTypes';
 import { Header } from './Header';
 import { albumAndPhotosSelector } from '../selectors';
+import { headerHeight } from '../config';
 
 @connect(albumAndPhotosSelector)
 export class Album extends PureComponent {
@@ -36,7 +37,7 @@ export class Album extends PureComponent {
   render() {
     const { album, photos, navigation } = this.props;
     return (
-      <View>
+      <View style={styles.container}>
         <Header title={album.title} navigation={navigation} />
         <FlatList
           style={{ marginTop: 5 }}
@@ -44,8 +45,9 @@ export class Album extends PureComponent {
           keyExtractor={this.keyExtractor}
           renderItem={this.renderThumbnail}
           numColumns={3}
-          columnWrapperStyle={{ justifyContent: 'center' }}
+          columnWrapperStyle={{ justifyContent: 'flex-start' }}
           ListEmptyComponent={<Spinner color="green" />}
+          ListFooterComponent={<View style={{ height: headerHeight }} />}
         />
       </View>
     );
@@ -53,6 +55,9 @@ export class Album extends PureComponent {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   row: {
     margin: 2,
     flexDirection: 'row',
@@ -64,8 +69,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   image: {
-    width: Dimensions.get('window').width / 3 - 6, //
-    height: Dimensions.get('window').width / 3 - 6,
-    borderRadius: 20,
+    width: Dimensions.get('window').width / 3 - 4, //
+    height: Dimensions.get('window').width / 3 - 4,
+    borderRadius: 2,
   },
 });

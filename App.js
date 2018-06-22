@@ -1,20 +1,15 @@
-import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import React from 'react';
+import { Provider } from 'react-redux';
 
 import Navigator from './src/navigator';
+import store from './src/store';
 
-export default class App extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Navigator />
-      </View>
-    );
-  }
-}
+console.ignoredYellowBox = [
+  'Warning: isMounted(...) is deprecated'
+];
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+export default () => (
+  <Provider store={store}>
+    <Navigator />
+  </Provider>
+);

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { FlatList, Dimensions, TouchableOpacity, Image, StyleSheet, View } from 'react-native';
+import { FlatList, TouchableOpacity, Image, StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
 import { Transition } from 'react-navigation-fluid-transitions';
 import { Spinner } from 'native-base';
@@ -9,8 +9,11 @@ import { navigationPaths } from '../navigator';
 import { photo } from '../propTypes';
 import { Header } from './Header';
 import { albumAndPhotosSelector } from '../selectors';
+import { headerHeight, imageMargin } from '../config';
+import { withOrientationChangeHandler } from '../decorators';
 
 @connect(albumAndPhotosSelector)
+@withOrientationChangeHandler
 export class Album extends PureComponent {
   static propTypes = {
     photos: PropTypes.arrayOf(photo),
@@ -26,9 +29,18 @@ export class Album extends PureComponent {
   keyExtractor = item => `${item.id}`;
 
   renderThumbnail = ({ item: { title, id, thumbnailUrl, albumId } }) => (
-    <TouchableOpacity style={styles.row} onPress={this.onThumbnailPress(id, albumId)}>
+    <TouchableOpacity style={styles.imageWrapper} onPress={this.onThumbnailPress(id, albumId)}>
       <Transition shared={`image${id}`}>
-        <Image style={styles.image} source={{ uri: thumbnailUrl }} />
+        <Image
+          style={[
+            styles.image,
+            {
+              width: this.state.imageSize,
+              height: this.state.imageSize,
+            },
+          ]}
+          source={{ uri: thumbnailUrl }}
+        />
       </Transition>
     </TouchableOpacity>
   );
@@ -36,16 +48,18 @@ export class Album extends PureComponent {
   render() {
     const { album, photos, navigation } = this.props;
     return (
-      <View>
+      <View style={styles.container}>
         <Header title={album.title} navigation={navigation} />
         <FlatList
+          key={this.state.orientation}
           style={{ marginTop: 5 }}
           data={photos}
           keyExtractor={this.keyExtractor}
           renderItem={this.renderThumbnail}
-          numColumns={3}
-          columnWrapperStyle={{ justifyContent: 'center' }}
+          numColumns={this.state.columnsNumber}
+          columnWrapperStyle={{ justifyContent: 'flex-start' }}
           ListEmptyComponent={<Spinner color="green" />}
+          ListFooterComponent={<View style={{ height: headerHeight }} />}
         />
       </View>
     );
@@ -53,8 +67,11 @@ export class Album extends PureComponent {
 }
 
 const styles = StyleSheet.create({
-  row: {
-    margin: 2,
+  container: {
+    flex: 1,
+  },
+  imageWrapper: {
+    margin: imageMargin,
     flexDirection: 'row',
   },
   textContainer: {
@@ -64,8 +81,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   image: {
-    width: Dimensions.get('window').width / 3 - 6, //
-    height: Dimensions.get('window').width / 3 - 6,
-    borderRadius: 20,
+    borderRadius: 2,
   },
 });

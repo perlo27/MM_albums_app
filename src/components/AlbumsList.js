@@ -2,17 +2,13 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { FlatList, ActivityIndicator, TouchableOpacity, Text } from 'react-native';
 import { withDataLoader } from '../decorators';
+import { navigationPaths } from '../navigator';
+import { album } from './propTypes';
 
 @withDataLoader
 export class AlbumsList extends PureComponent {
   static propTypes = {
-    albums: PropTypes.arrayOf(
-      PropTypes.shape({
-        userId: PropTypes.number,
-        id: PropTypes.number,
-        title: PropTypes.string,
-      }),
-    ),
+    albums: PropTypes.arrayOf(album),
     isLoading: PropTypes.bool,
   };
 
@@ -20,7 +16,7 @@ export class AlbumsList extends PureComponent {
     albums: [],
   };
 
-  onPress = id => () => this.props.navigation.navigate('album', { id });
+  onPress = id => () => this.props.navigation.navigate(navigationPaths.album, { id });
 
   keyExtractor = item => `${item.id}`;
 

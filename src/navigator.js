@@ -1,8 +1,7 @@
 import { FluidNavigator } from 'react-navigation-fluid-transitions';
 import React from 'react';
-import { View, Text } from 'react-native';
 
-import { AlbumsList, Album } from './components';
+import { AlbumsList, Album, Photo } from './components';
 
 export const navigationPaths = {
   albumList: 'albumList',
@@ -15,11 +14,5 @@ export default FluidNavigator({
     screen: AlbumsList,
   },
   [navigationPaths.album]: Album,
-  [navigationPaths.photo]: {
-    screen: () => (
-      <View>
-        <Text>photo</Text>
-      </View>
-    ),
-  },
+  [navigationPaths.photo]: Photo,
 });

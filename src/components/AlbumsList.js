@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { FlatList, View, Text } from 'react-native';
+import { FlatList, View, Text, StyleSheet } from 'react-native';
 import { ListItem, Header, Title, Spinner } from 'native-base';
 
 import { withDataLoader } from '../decorators';
@@ -33,7 +33,7 @@ export class AlbumsList extends PureComponent {
     const { albums } = this.props;
     return (
       <View>
-        <Header style={{ backgroundColor: 'white', height: headerHeight }}>
+        <Header style={styles.header}>
           <Title>Albums</Title>
         </Header>
         <FlatList
@@ -46,3 +46,10 @@ export class AlbumsList extends PureComponent {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  header: {
+    backgroundColor: 'white',
+    height: headerHeight,
+  },
+});

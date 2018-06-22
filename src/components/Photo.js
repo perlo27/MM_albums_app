@@ -19,6 +19,9 @@ export class Photo extends PureComponent {
 
   render() {
     const { photo, navigation } = this.props;
+    if(!photo) {
+      return null;
+    }
     return (
       <View style={styles.container}>
         <Header title={photo.title} navigation={navigation} />

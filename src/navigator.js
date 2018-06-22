@@ -4,18 +4,18 @@ import { View, Text } from 'react-native';
 
 import { AlbumsList, Album } from './components';
 
-export const paths = {
+export const navigationPaths = {
   albumList: 'albumList',
   album: 'album',
   photo: 'photo',
 };
 
 export default FluidNavigator({
-  [paths.albumList]: {
+  [navigationPaths.albumList]: {
     screen: AlbumsList,
   },
-  [paths.album]: Album,
-  [paths.photo]: {
+  [navigationPaths.album]: Album,
+  [navigationPaths.photo]: {
     screen: () => (
       <View>
         <Text>photo</Text>

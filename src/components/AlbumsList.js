@@ -1,9 +1,15 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { FlatList, ActivityIndicator, TouchableOpacity, Text } from 'react-native';
+import { FlatList, ActivityIndicator, View, Text } from 'react-native';
+import { ListItem, Header, Title } from 'native-base';
+
+
 import { withDataLoader } from '../decorators';
 import { navigationPaths } from '../navigator';
 import { album } from './propTypes';
+import { headerHeight } from '../config';
+
+
 
 @withDataLoader
 export class AlbumsList extends PureComponent {
@@ -16,14 +22,15 @@ export class AlbumsList extends PureComponent {
     albums: [],
   };
 
-  onPress = id => () => this.props.navigation.navigate(navigationPaths.album, { id });
+  onPress = (id, title) => () =>
+    this.props.navigation.navigate(navigationPaths.album, { id, title });
 
   keyExtractor = item => `${item.id}`;
 
   renderAlbum = ({ item: { title, id } }) => (
-    <TouchableOpacity onPress={this.onPress(id)}>
+    <ListItem onPress={this.onPress(id, title)}>
       <Text>{title}</Text>
-    </TouchableOpacity>
+    </ListItem>
   );
 
   render() {
@@ -32,11 +39,17 @@ export class AlbumsList extends PureComponent {
       return <ActivityIndicator />;
     }
     return (
-      <FlatList
-        data={this.props.albums}
-        keyExtractor={this.keyExtractor}
-        renderItem={this.renderAlbum}
-      />
+      <View>
+        <Header style={{backgroundColor: 'white', height: headerHeight}}>
+          <Title>Albums</Title>
+        </Header>
+        <FlatList
+          data={this.props.albums}
+          keyExtractor={this.keyExtractor}
+          renderItem={this.renderAlbum}
+          ListEmptyComponent={ActivityIndicator}
+        />
+      </View>
     );
   }
 }

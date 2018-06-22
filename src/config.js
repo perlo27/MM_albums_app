@@ -1,5 +1,6 @@
 import { albumsMapper, photosMapper } from './mappers';
 import {getAlbumsAction, getPhotosAction} from './actions/entities';
+
 export const endpoint = 'https://jsonplaceholder.typicode.com';
 
 export const dataTypes = {
@@ -14,3 +15,5 @@ export const dataTypes = {
     action: getPhotosAction
   },
 };
+
+export const headerHeight = 50;

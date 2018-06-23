@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AlbumsList should render correctly 1`] = `
+<Transition
+  appear="horizontal"
+>
+  <View>
+    <Header
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "height": 50,
+            "paddingTop": 0,
+          },
+          Object {
+            "backgroundColor": "white",
+          },
+        ]
+      }
+    >
+      <Title>
+        Albums
+      </Title>
+    </Header>
+    <RCTScrollView
+      ListEmptyComponent={
+        <Spinner
+          color="green"
+        />
+      }
+      data={
+        Array [
+          Object {
+            "id": 1,
+            "title": "Quidem molestiae enim",
+            "userId": 1,
+          },
+          Object {
+            "id": 2,
+            "title": "Quidem molestiae enim 1",
+            "userId": 2,
+          },
+        ]
+      }
+      disableVirtualization={false}
+      getItem={[Function]}
+      getItemCount={[Function]}
+      horizontal={false}
+      initialNumToRender={10}
+      keyExtractor={[Function]}
+      maxToRenderPerBatch={10}
+      numColumns={1}
+      onContentSizeChange={[Function]}
+      onEndReachedThreshold={2}
+      onLayout={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      renderItem={[Function]}
+      scrollEventThrottle={50}
+      stickyHeaderIndices={Array []}
+      updateCellsBatchingPeriod={50}
+      viewabilityConfigCallbackPairs={Array []}
+      windowSize={21}
+    >
+      <View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <ListItem
+            onPress={[Function]}
+          >
+            <Left>
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+              >
+                Quidem molestiae enim
+              </Text>
+            </Left>
+            <Right>
+              <Icon
+                name="arrow-forward"
+              />
+            </Right>
+          </ListItem>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <ListItem
+            onPress={[Function]}
+          >
+            <Left>
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+              >
+                Quidem molestiae enim 1
+              </Text>
+            </Left>
+            <Right>
+              <Icon
+                name="arrow-forward"
+              />
+            </Right>
+          </ListItem>
+        </View>
+      </View>
+    </RCTScrollView>
+  </View>
+</Transition>
+`;

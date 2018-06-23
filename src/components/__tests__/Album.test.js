@@ -23,7 +23,6 @@ describe('Album', function() {
       .first()
       .prop('renderItem')(testItem);
 
-    console.log(a.props.onPress);
     a.props.onPress();
     expect(navigation.navigate).toHaveBeenCalledWith(navigationPaths.photo, testIds);
   });

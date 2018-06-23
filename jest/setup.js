@@ -6,15 +6,18 @@ Enzyme.configure({ adapter: new Adapter() });
 global.fetch = require('jest-fetch-mock');
 
 jest.mock('react-navigation-fluid-transitions', () => ({
-  'Transition': 'Transition',
-  'FluidNavigator': jest.fn()
+  Transition: 'Transition',
+  FluidNavigator: jest.fn(),
 }));
 
 jest.mock('native-base', () => ({
-  'Header': 'Header',
-  'Body': 'Body',
-  'Left': 'Left',
-  'Button': 'Button',
-  'Icon': 'Icon',
-  'Spinner': 'Spinner'
+  Header: 'Header',
+  Body: 'Body',
+  Left: 'Left',
+  Button: 'Button',
+  Icon: 'Icon',
+  Spinner: 'Spinner',
+  ListItem: 'ListItem',
+  Title: 'Title',
+  Right: 'Right',
 }));

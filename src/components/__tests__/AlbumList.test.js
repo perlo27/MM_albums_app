@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 
 import { AlbumsList } from '../AlbumsList';
-import { navigation, store } from './moks';
+import { navigation, store } from '../../../jest/moks';
 import { navigationPaths } from '../../navigator';
 
 jest.mock('../Header', () => ({

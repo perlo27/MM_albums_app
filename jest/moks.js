@@ -2,7 +2,7 @@ import configureStore from 'redux-mock-store';
 
 const mockStore = configureStore([]);
 
-const initState = {
+export const initState = {
   entities: {
     photos: {
       1: [

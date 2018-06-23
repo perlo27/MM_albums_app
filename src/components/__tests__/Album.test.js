@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 
 import { Album } from '../Album';
-import { navigation, store } from './moks';
+import { navigation, store } from '../../../jest/moks';
 import { navigationPaths } from '../../navigator';
 
 describe('Album', function() {

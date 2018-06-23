@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { Photo } from '../Photo';
 
-import { store, navigation, storeWithoutPhoto } from './moks';
+import { store, navigation, storeWithoutPhoto } from '../../../jest/moks';
 
 jest.mock('../Header', () => ({
   'Header': 'Header'

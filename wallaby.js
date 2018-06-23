@@ -7,7 +7,7 @@ module.exports = function (wallaby) {
       'src/**/*.snap',
       '!src/**/__tests__/*.test.js',
       '!src/**/*.test.js',
-      'jest/setup.js',
+      'jest/*.js',
     ],
 
     tests: [

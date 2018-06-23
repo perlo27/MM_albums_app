@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`entities should handle getAlbumsAction request action properly 1`] = `
+Object {
+  "albums": null,
+  "areAlbumsLoading": true,
+  "arePhotosLoading": false,
+  "photos": null,
+}
+`;
+
+exports[`entities should handle getAlbumsAction success action properly 1`] = `
+Object {
+  "albums": Array [
+    Object {
+      "id": 1,
+      "title": "Quidem molestiae enim",
+      "userId": 1,
+    },
+    Object {
+      "id": 2,
+      "title": "Quidem molestiae enim 1",
+      "userId": 2,
+    },
+  ],
+  "areAlbumsLoading": false,
+  "arePhotosLoading": false,
+  "photos": null,
+}
+`;
+
+exports[`entities should handle getPhotosAction request action properly 1`] = `
+Object {
+  "albums": null,
+  "areAlbumsLoading": true,
+  "arePhotosLoading": false,
+  "photos": null,
+}
+`;
+
+exports[`entities should handle getPhotosAction success action properly 1`] = `
+Object {
+  "albums": null,
+  "areAlbumsLoading": false,
+  "arePhotosLoading": false,
+  "photos": Object {
+    "1": Array [
+      Object {
+        "albumId": 1,
+        "id": 1,
+        "thumbnailUrl": "thumbnailUrl",
+        "title": "Test",
+        "url": "url",
+      },
+    ],
+    "2": Array [
+      Object {
+        "albumId": 2,
+        "id": 2,
+        "thumbnailUrl": "thumbnailUrl",
+        "title": "Test2",
+        "url": "url2",
+      },
+    ],
+  },
+}
+`;

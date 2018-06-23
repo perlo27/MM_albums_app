@@ -1,6 +1,6 @@
 import { GET_ALBUMS, GET_PHOTOS, successType, requestType } from '../actions';
 
-const initialState = {
+export const initialState = {
   albums: null,
   photos: null,
   areAlbumsLoading: false,

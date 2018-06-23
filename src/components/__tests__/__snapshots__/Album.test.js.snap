@@ -1,0 +1,195 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Album should render correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Header
+    style={
+      Array [
+        Object {
+          "height": 50,
+          "paddingTop": 0,
+        },
+        Object {
+          "backgroundColor": "white",
+        },
+      ]
+    }
+  >
+    <Left
+      style={
+        Object {
+          "flex": 0,
+        }
+      }
+    >
+      <Button
+        onPress={[Function]}
+        transparent={true}
+      >
+        <Icon
+          name="arrow-back"
+        />
+      </Button>
+    </Left>
+    <Body
+      style={
+        Object {
+          "alignItems": "flex-start",
+          "marginLeft": 5,
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        numberOfLines={2}
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        Quidem molestiae enim
+      </Text>
+    </Body>
+  </Header>
+  <RCTScrollView
+    ListEmptyComponent={
+      <Spinner
+        color="green"
+      />
+    }
+    ListFooterComponent={
+      <Component
+        style={
+          Object {
+            "height": 50,
+          }
+        }
+      />
+    }
+    columnWrapperStyle={
+      Object {
+        "justifyContent": "flex-start",
+      }
+    }
+    data={
+      Array [
+        Object {
+          "albumId": 1,
+          "id": 1,
+          "thumbnailUrl": "thumbnailUrl",
+          "title": "Test",
+          "url": "url",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={3}
+    onContentSizeChange={[Function]}
+    onEndReachedThreshold={2}
+    onLayout={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    stickyHeaderIndices={Array []}
+    style={
+      Object {
+        "marginTop": 5,
+      }
+    }
+    updateCellsBatchingPeriod={50}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
+  >
+    <View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+              },
+              Object {
+                "justifyContent": "flex-start",
+              },
+            ]
+          }
+        >
+          <View
+            accessible={true}
+            isTVSelectable={true}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "flexDirection": "row",
+                "margin": 2,
+                "opacity": 1,
+              }
+            }
+          >
+            <Transition
+              shared="image1"
+            >
+              <Image
+                source={
+                  Object {
+                    "uri": "thumbnailUrl",
+                  }
+                }
+                style={
+                  Array [
+                    Object {
+                      "borderRadius": 2,
+                    },
+                    Object {
+                      "height": 246,
+                      "width": 246,
+                    },
+                  ]
+                }
+              />
+            </Transition>
+          </View>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "height": 50,
+            }
+          }
+        />
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;

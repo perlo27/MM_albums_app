@@ -2,21 +2,40 @@ import configureStore from 'redux-mock-store';
 
 const mockStore = configureStore([]);
 
-export const testPhoto = {
-  albumId: 1,
-  id: 1,
-  title: 'Test',
-  url: 'url',
-  thumbnailUrl: 'thumbnailUrl',
-};
-
-
 const initState = {
   entities: {
     photos: {
-      1: [testPhoto],
+      1: [
+        {
+          albumId: 1,
+          id: 1,
+          title: 'Test',
+          url: 'url',
+          thumbnailUrl: 'thumbnailUrl',
+        },
+      ],
+      2: [
+        {
+          albumId: 2,
+          id: 2,
+          title: 'Test2',
+          url: 'url2',
+          thumbnailUrl: 'thumbnailUrl',
+        },
+      ],
     },
-    albums: [],
+    albums: [
+      {
+        userId: 1,
+        id: 1,
+        title: 'Quidem molestiae enim',
+      },
+      {
+        userId: 2,
+        id: 2,
+        title: 'Quidem molestiae enim 1',
+      },
+    ],
   },
 };
 
@@ -37,6 +56,6 @@ export const navigation = {
     params: {
       id: 1,
       albumId: 1,
-    }
+    },
   },
 };

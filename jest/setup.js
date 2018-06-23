@@ -1,6 +1,5 @@
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import { FluidNavigator } from 'react-navigation-fluid-transitions';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -17,4 +16,5 @@ jest.mock('native-base', () => ({
   'Left': 'Left',
   'Button': 'Button',
   'Icon': 'Icon',
+  'Spinner': 'Spinner'
 }));

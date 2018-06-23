@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Photo should render correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Transition
+    anchor="image1"
+  >
+    <Header
+      navigation={
+        Object {
+          "goBack": [MockFunction],
+          "navigate": [MockFunction],
+          "state": Object {
+            "params": Object {
+              "albumId": 1,
+              "id": 1,
+            },
+          },
+        }
+      }
+      title="Test"
+    />
+  </Transition>
+  <Transition
+    shared="image1"
+  >
+    <Image
+      source={
+        Object {
+          "uri": "url",
+        }
+      }
+      style={
+        Object {
+          "height": 1264,
+          "width": 750,
+        }
+      }
+    />
+  </Transition>
+</View>
+`;
+
+exports[`Photo should render without image 1`] = `null`;

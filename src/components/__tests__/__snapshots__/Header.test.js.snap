@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should render correctly on android 1`] = `
+<Header
+  style={
+    Array [
+      Object {
+        "height": 50,
+        "paddingTop": 0,
+      },
+      false,
+    ]
+  }
+>
+  <Left
+    style={
+      Object {
+        "flex": 0,
+      }
+    }
+  >
+    <Button
+      onPress={[Function]}
+      transparent={true}
+    >
+      <Icon
+        name="arrow-back"
+      />
+    </Button>
+  </Left>
+  <Body
+    style={
+      Object {
+        "alignItems": "flex-start",
+        "marginLeft": 5,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      numberOfLines={2}
+      style={
+        Object {
+          "fontWeight": "bold",
+        }
+      }
+    >
+      test
+    </Text>
+  </Body>
+</Header>
+`;
+
+exports[`Header should render correctly on ios 1`] = `
+<Header
+  style={
+    Array [
+      Object {
+        "height": 50,
+        "paddingTop": 0,
+      },
+      Object {
+        "backgroundColor": "white",
+      },
+    ]
+  }
+>
+  <Left
+    style={
+      Object {
+        "flex": 0,
+      }
+    }
+  >
+    <Button
+      onPress={[Function]}
+      transparent={true}
+    >
+      <Icon
+        name="arrow-back"
+      />
+    </Button>
+  </Left>
+  <Body
+    style={
+      Object {
+        "alignItems": "flex-start",
+        "marginLeft": 5,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      numberOfLines={2}
+      style={
+        Object {
+          "fontWeight": "bold",
+        }
+      }
+    >
+      test
+    </Text>
+  </Body>
+</Header>
+`;

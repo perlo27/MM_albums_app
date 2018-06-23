@@ -22,7 +22,7 @@ export const withDataLoader = Component => {
   return Wrapper;
 };
 
-const getParamsFromDimensions = ({ width, height }) => {
+export const getParamsFromDimensions = ({ width, height }) => {
   const orientation = height > width ? orientationTypes.portrait : orientationTypes.landscape;
   const columnsNumber = columnsNumberMapping[orientation];
   const imageSize = width / columnsNumber - imageMargin * 2;

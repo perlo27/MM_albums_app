@@ -1,6 +1,6 @@
-const REQUEST = 'REQUEST';
-const SUCCESS = 'SUCCESS';
-const ERROR = 'ERROR';
+export const REQUEST = 'REQUEST';
+export const SUCCESS = 'SUCCESS';
+export const ERROR = 'ERROR';
 
 export const requestType = name => `${name}_${REQUEST}`;
 export const successType = name => `${name}_${SUCCESS}`;

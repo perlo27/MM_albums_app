@@ -65,3 +65,12 @@ Object {
   },
 }
 `;
+
+exports[`entities should handle not entities action properly 1`] = `
+Object {
+  "albums": null,
+  "areAlbumsLoading": false,
+  "arePhotosLoading": false,
+  "photos": null,
+}
+`;

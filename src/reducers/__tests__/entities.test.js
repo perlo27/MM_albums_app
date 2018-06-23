@@ -1,11 +1,11 @@
-import entities, {initialState} from '../entities';
+import entities, { initialState } from '../entities';
 import { getAlbumsAction, getPhotosAction } from '../../actions';
-import { initState  } from '../../../jest/moks';
+import { initState } from '../../../jest/moks';
 
 const testAlbumsRequestAction = getAlbumsAction.request();
-const testAlbumsSuccessAction = getAlbumsAction.success({response: initState.entities.albums});
+const testAlbumsSuccessAction = getAlbumsAction.success({ response: initState.entities.albums });
 const testPhotosRequestAction = getAlbumsAction.request();
-const testPhotosSuccessAction = getPhotosAction.success({response: initState.entities.photos});
+const testPhotosSuccessAction = getPhotosAction.success({ response: initState.entities.photos });
 
 describe('entities', () => {
   it('should handle getAlbumsAction request action properly', () => {
@@ -19,5 +19,8 @@ describe('entities', () => {
   });
   it('should handle getPhotosAction success action properly', () => {
     expect(entities(initialState, testPhotosSuccessAction)).toMatchSnapshot();
+  });
+  it('should handle not entities action properly', () => {
+    expect(entities(initialState, { type: 'test' })).toMatchSnapshot();
   });
 });

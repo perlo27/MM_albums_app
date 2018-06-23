@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TopSpacer should render correctly on android 1`] = `null`;
+
+exports[`TopSpacer should render correctly on ios 1`] = `
+<View
+  style={
+    Object {
+      "height": 20,
+    }
+  }
+/>
+`;

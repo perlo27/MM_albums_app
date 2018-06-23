@@ -1,6 +1,7 @@
 import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 
-const mockStore = configureStore([]);
+const mockStore = configureStore([thunk]);
 
 export const initState = {
   entities: {
@@ -46,6 +47,13 @@ export const storeWithoutPhoto = mockStore({
       1: [],
     },
     albums: [],
+  },
+});
+export const storeWithoutAlbums = mockStore({
+  entities: {
+    photos: {
+    },
+    albums: null,
   },
 });
 
